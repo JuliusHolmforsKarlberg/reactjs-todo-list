@@ -7,11 +7,12 @@ import ListTodo from "./components/ListTodo";
 const App = () => {
 
   const [listTask, setListTask] = useState([])
-  // backup for our listTask data
+  // backup for the listTask data
   const [listTaskBackup, setListTaskBackup] = useState([])
 
   const filterTaskInput = useRef("")
 
+  // nollställer listan
   const clearList = () => {
     setListTask([]);
   };
@@ -21,7 +22,7 @@ const App = () => {
     if(newTask!=""){
 
       setListTask([...listTask,newTask])
-      //add the new value to our backup aswell
+      //add the new value to backup aswell
       setListTaskBackup([...listTaskBackup,newTask])
     }
 
@@ -36,7 +37,7 @@ const App = () => {
     let newListTask = [...listTask];
     newListTask = newListTask.filter((_,index)=>index!=idTask)
     setListTask([...newListTask])
-    //delete the value from our backup as well
+    //delete the value from backup as well
     setListTaskBackup([...newListTask])
 
   }
@@ -53,6 +54,7 @@ const App = () => {
     }
 
   }
+
   return (
     <>
       <div>
@@ -75,7 +77,7 @@ const App = () => {
           list={listTask}
           onDeleteTask={deteleTaskById}
          />
-         <div>
+         <div className="d-flex justify-content-center">
           <button className='btn btn-danger btn-md' onClick={clearList}>
             NOLLSTÄLL LISTAN
           </button>
